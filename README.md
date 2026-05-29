@@ -6,6 +6,11 @@ An end-to-end data engineering pipeline that automatically ingests daily stock m
 
 ## Pipeline Architecture
 
+![Architecture Diagram](docs/architecture.svg)
+
+---
+
+<!-- Mermaid fallback (rendered on GitHub if SVG is not supported) -->
 ```mermaid
 flowchart TD
     subgraph Sources["Data Sources"]

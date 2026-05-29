@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 660" width="1400" height="660">
+  <defs>
+    <marker id="arr"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#64748B"/></marker>
+    <marker id="arrO" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#F97316"/></marker>
+    <marker id="arrP" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#8B5CF6"/></marker>
+    <marker id="arrA" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#D97706"/></marker>
+    <style>
+      text { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- ── Background ────────────────────────────────────────────────── -->
+  <rect width="1400" height="660" fill="#F8FAFC"/>
+
+  <!-- ── Title bar ─────────────────────────────────────────────────── -->
+  <rect width="1400" height="70" fill="#0F172A"/>
+  <text x="700" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#F8FAFC" letter-spacing="0.4">Automated Portfolio Analytics Pipeline</text>
+  <text x="700" y="54" text-anchor="middle" font-size="11" fill="#94A3B8" letter-spacing="1.8">DOCKER  ·  PYTHON  ·  POSTGRESQL  ·  APACHE AIRFLOW  ·  DBT CORE  ·  METABASE</text>
+
+  <!-- ── Docker outer border ───────────────────────────────────────── -->
+  <rect x="16" y="78" width="1368" height="570" fill="none" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="8,4" rx="10"/>
+  <rect x="16" y="70" width="158" height="18" fill="#F8FAFC"/>
+  <text x="20" y="83" font-size="10" fill="#94A3B8" font-weight="600">🐋  Docker Environment</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       SECTION HEADER LABELS
+  ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="28"   y="90" width="188" height="20" rx="4" fill="#FEF3C7"/>
+  <text x="122"  y="104" text-anchor="middle" font-size="9" font-weight="700" fill="#92400E" letter-spacing="1">DATA SOURCES</text>
+
+  <rect x="258"  y="90" width="154" height="20" rx="4" fill="#DBEAFE"/>
+  <text x="335"  y="104" text-anchor="middle" font-size="9" font-weight="700" fill="#1E40AF" letter-spacing="1">INGESTION</text>
+
+  <rect x="454"  y="90" width="158" height="20" rx="4" fill="#D1FAE5"/>
+  <text x="533"  y="104" text-anchor="middle" font-size="9" font-weight="700" fill="#065F46" letter-spacing="1">🥉  BRONZE LAYER</text>
+
+  <rect x="652"  y="82" width="338" height="28" rx="6" fill="#7C3AED"/>
+  <text x="821"  y="101" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.4">dbt Core — Transformation</text>
+
+  <rect x="1042" y="90" width="162" height="20" rx="4" fill="#FEF9C3"/>
+  <text x="1123" y="104" text-anchor="middle" font-size="9" font-weight="700" fill="#713F12" letter-spacing="1">🥇  ANALYTICS LAYER</text>
+
+  <rect x="1256" y="90" width="124" height="20" rx="4" fill="#FCE7F3"/>
+  <text x="1318" y="104" text-anchor="middle" font-size="9" font-weight="700" fill="#9D174D" letter-spacing="1">DASHBOARD</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       COLUMN 1 — DATA SOURCES
+  ══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Yahoo Finance card -->
+  <rect x="28"  y="116" width="188" height="112" rx="8" fill="white" stroke="#FCD34D" stroke-width="1.5"/>
+  <rect x="28"  y="116" width="188" height="33"  rx="8" fill="#FEF9C3"/>
+  <rect x="28"  y="133" width="188" height="16"  fill="#FEF9C3"/>
+  <text x="122" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#78350F">Yahoo Finance API</text>
+  <text x="122" y="154" text-anchor="middle" font-size="10" fill="#B45309">yfinance Python library</text>
+  <line x1="44" y1="163" x2="200" y2="163" stroke="#FDE68A" stroke-width="1"/>
+  <text x="122" y="179" text-anchor="middle" font-size="10" fill="#44403C">AAPL · MSFT · GOOG · JPM · C</text>
+  <text x="122" y="195" text-anchor="middle" font-size="10" fill="#44403C">Open · High · Low · Close · Vol</text>
+  <text x="122" y="211" text-anchor="middle" font-size="9"  fill="#78716C">Historical + daily prices</text>
+
+  <!-- portfolio_holdings.csv card -->
+  <rect x="28"  y="242" width="188" height="92"  rx="8" fill="white" stroke="#FCD34D" stroke-width="1.5"/>
+  <rect x="28"  y="242" width="188" height="33"  rx="8" fill="#FEF9C3"/>
+  <rect x="28"  y="259" width="188" height="16"  fill="#FEF9C3"/>
+  <text x="122" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="#78350F">portfolio_holdings.csv</text>
+  <text x="122" y="280" text-anchor="middle" font-size="10" fill="#B45309">dbt Static Seed File</text>
+  <line x1="44" y1="288" x2="200" y2="288" stroke="#FDE68A" stroke-width="1"/>
+  <text x="122" y="304" text-anchor="middle" font-size="10" fill="#44403C">Ticker · Shares · Cost Basis</text>
+  <text x="122" y="320" text-anchor="middle" font-size="10" fill="#44403C">Purchase Date · Sector</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       ARROWS  Sources → Ingestion
+  ══════════════════════════════════════════════════════════════════════ -->
+  <path d="M 216 172 L 250 172" stroke="#64748B" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <text x="233" y="165" text-anchor="middle" font-size="9" fill="#64748B">HTTP</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       COLUMN 2 — INGESTION
+  ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="258" y="116" width="154" height="132" rx="8" fill="white" stroke="#93C5FD" stroke-width="1.5"/>
+  <rect x="258" y="116" width="154" height="33"  rx="8" fill="#EFF6FF"/>
+  <rect x="258" y="133" width="154" height="16"  fill="#EFF6FF"/>
+  <text x="335" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A8A">extract_data.py</text>
+  <text x="335" y="154" text-anchor="middle" font-size="10" fill="#3B82F6">Python Module</text>
+  <line x1="272" y1="163" x2="398" y2="163" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="335" y="180" text-anchor="middle" font-size="10" fill="#44403C">extract_stock_data()</text>
+  <text x="335" y="197" text-anchor="middle" font-size="10" fill="#44403C">load_data_to_postgres()</text>
+  <text x="335" y="214" text-anchor="middle" font-size="9"  fill="#78716C">Append-only insert</text>
+  <text x="335" y="230" text-anchor="middle" font-size="9"  fill="#78716C">Rows timestamped (extracted_at)</text>
+  <text x="335" y="242" text-anchor="middle" font-size="9"  fill="#78716C">Credentials via env vars</text>
+
+  <!-- ── Arrow Ingestion → Raw ─────────────────────────────────────── -->
+  <path d="M 412 182 L 446 182" stroke="#64748B" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <text x="429" y="175" text-anchor="middle" font-size="9" fill="#64748B">INSERT</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       COLUMN 3 — RAW LAYER  (PostgreSQL raw schema)
+  ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="454" y="116" width="158" height="132" rx="8" fill="white" stroke="#6EE7B7" stroke-width="1.5"/>
+  <rect x="454" y="116" width="158" height="33"  rx="8" fill="#ECFDF5"/>
+  <rect x="454" y="133" width="158" height="16"  fill="#ECFDF5"/>
+  <text x="533" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#064E3B">PostgreSQL</text>
+  <text x="533" y="154" text-anchor="middle" font-size="10" fill="#059669">raw schema</text>
+  <line x1="468" y1="163" x2="596" y2="163" stroke="#A7F3D0" stroke-width="1"/>
+
+  <!-- raw.stock_prices table box -->
+  <rect x="468" y="169" width="130" height="72" rx="4" fill="#F0FDF4" stroke="#6EE7B7" stroke-width="1"/>
+  <text x="533" y="185" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">raw.stock_prices</text>
+  <line x1="474" y1="191" x2="592" y2="191" stroke="#A7F3D0" stroke-width="0.5"/>
+  <text x="533" y="206" text-anchor="middle" font-size="9" fill="#57534E">date · ticker</text>
+  <text x="533" y="220" text-anchor="middle" font-size="9" fill="#57534E">open · high · low · close</text>
+  <text x="533" y="234" text-anchor="middle" font-size="9" fill="#57534E">volume · extracted_at</text>
+
+  <text x="533" y="257" text-anchor="middle" font-size="9" fill="#78716C">Append-only · never modified</text>
+
+  <!-- ── Arrow Raw → dbt ───────────────────────────────────────────── -->
+  <path d="M 612 182 L 644 182" stroke="#64748B" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <text x="628" y="175" text-anchor="middle" font-size="9" fill="#64748B">SELECT</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       COLUMN 4 — DBT CORE (Transformation)
+  ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="652" y="114" width="338" height="278" rx="8" fill="white" stroke="#8B5CF6" stroke-width="1.5"/>
+
+  <!-- Staging sub-layer -->
+  <rect x="664" y="124" width="314" height="74" rx="6" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="821" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#78350F">🥉  STAGING  (Bronze — materialized: view)</text>
+  <text x="821" y="160" text-anchor="middle" font-size="10" fill="#57534E">stg_stock_prices  ·  stg_portfolio_holdings</text>
+  <text x="821" y="176" text-anchor="middle" font-size="9"  fill="#78716C">Rename columns · cast data types · deduplicate raw data</text>
+
+  <!-- ↓ -->
+  <path d="M 821 198 L 821 207" stroke="#8B5CF6" stroke-width="1.5" fill="none" marker-end="url(#arrP)"/>
+
+  <!-- Intermediate sub-layer -->
+  <rect x="664" y="208" width="314" height="74" rx="6" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+  <text x="821" y="228" text-anchor="middle" font-size="10" font-weight="700" fill="#1E293B">🥈  INTERMEDIATE  (Silver — materialized: view)</text>
+  <text x="821" y="245" text-anchor="middle" font-size="10" fill="#57534E">int_stock_prices_enriched</text>
+  <text x="821" y="261" text-anchor="middle" font-size="9"  fill="#78716C">50-day &amp; 200-day moving averages via SQL WINDOW functions</text>
+
+  <!-- ↓ -->
+  <path d="M 821 282 L 821 291" stroke="#8B5CF6" stroke-width="1.5" fill="none" marker-end="url(#arrP)"/>
+
+  <!-- Marts sub-layer -->
+  <rect x="664" y="292" width="314" height="92" rx="6" fill="#FEF9C3" stroke="#EAB308" stroke-width="1"/>
+  <text x="821" y="311" text-anchor="middle" font-size="10" font-weight="700" fill="#713F12">🥇  MARTS  (Gold — materialized: table)</text>
+  <text x="821" y="328" text-anchor="middle" font-size="10" fill="#57534E">dim_companies  ·  fct_portfolio_valuation</text>
+  <text x="821" y="344" text-anchor="middle" font-size="9"  fill="#78716C">Star schema · Ticker &amp; sector dimensions</text>
+  <text x="821" y="360" text-anchor="middle" font-size="9"  fill="#78716C">Market value · Unrealized P&amp;L · MA signals</text>
+  <text x="821" y="376" text-anchor="middle" font-size="9"  fill="#78716C">dbt tests: unique · not_null · relationships</text>
+
+  <!-- ── Arrow dbt → Analytics ─────────────────────────────────────── -->
+  <path d="M 990 253 L 1034 253" stroke="#64748B" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <text x="1012" y="246" text-anchor="middle" font-size="9" fill="#64748B">dbt run</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       COLUMN 5 — ANALYTICS LAYER  (PostgreSQL analytics schema)
+  ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="1042" y="116" width="162" height="276" rx="8" fill="white" stroke="#EAB308" stroke-width="1.5"/>
+  <rect x="1042" y="116" width="162" height="33"  rx="8" fill="#FEF9C3"/>
+  <rect x="1042" y="133" width="162" height="16"  fill="#FEF9C3"/>
+  <text x="1123" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#713F12">PostgreSQL</text>
+  <text x="1123" y="154" text-anchor="middle" font-size="10" fill="#CA8A04">analytics schema</text>
+  <line x1="1056" y1="163" x2="1196" y2="163" stroke="#FDE68A" stroke-width="1"/>
+
+  <!-- dim_companies table -->
+  <rect x="1054" y="170" width="138" height="92" rx="4" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1"/>
+  <text x="1123" y="186" text-anchor="middle" font-size="10" font-weight="600" fill="#78350F">dim_companies</text>
+  <line x1="1060" y1="192" x2="1186" y2="192" stroke="#FDE68A" stroke-width="0.5"/>
+  <text x="1123" y="207" text-anchor="middle" font-size="9" fill="#57534E">ticker  (PK)</text>
+  <text x="1123" y="221" text-anchor="middle" font-size="9" fill="#57534E">company_name</text>
+  <text x="1123" y="235" text-anchor="middle" font-size="9" fill="#57534E">sector · market</text>
+  <text x="1123" y="255" text-anchor="middle" font-size="8" fill="#78716C">Dimension Table</text>
+
+  <!-- fct_portfolio_valuation table -->
+  <rect x="1054" y="272" width="138" height="112" rx="4" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1"/>
+  <text x="1123" y="288" text-anchor="middle" font-size="9" font-weight="600" fill="#78350F">fct_portfolio_valuation</text>
+  <line x1="1060" y1="294" x2="1186" y2="294" stroke="#FDE68A" stroke-width="0.5"/>
+  <text x="1123" y="309" text-anchor="middle" font-size="9" fill="#57534E">price_date  (PK)</text>
+  <text x="1123" y="323" text-anchor="middle" font-size="9" fill="#57534E">ticker  (FK → dim)</text>
+  <text x="1123" y="337" text-anchor="middle" font-size="9" fill="#57534E">market_value · P&amp;L</text>
+  <text x="1123" y="351" text-anchor="middle" font-size="9" fill="#57534E">ma_50d · ma_200d</text>
+  <text x="1123" y="377" text-anchor="middle" font-size="8" fill="#78716C">Fact Table</text>
+
+  <!-- ── Arrow Analytics → Metabase ───────────────────────────────── -->
+  <path d="M 1204 253 L 1248 253" stroke="#64748B" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <text x="1226" y="246" text-anchor="middle" font-size="9" fill="#64748B">SELECT</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       COLUMN 6 — METABASE DASHBOARD
+  ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="1256" y="116" width="120" height="276" rx="8" fill="white" stroke="#F9A8D4" stroke-width="1.5"/>
+  <rect x="1256" y="116" width="120" height="33"  rx="8" fill="#FDF2F8"/>
+  <rect x="1256" y="133" width="120" height="16"  fill="#FDF2F8"/>
+  <text x="1316" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#831843">Metabase</text>
+  <text x="1316" y="154" text-anchor="middle" font-size="10" fill="#DB2777">BI Dashboard</text>
+  <line x1="1264" y1="163" x2="1368" y2="163" stroke="#FBCFE8" stroke-width="1"/>
+
+  <text x="1316" y="182" text-anchor="middle" font-size="10" font-weight="600" fill="#831843">Visualizations</text>
+  <text x="1316" y="202" text-anchor="middle" font-size="9" fill="#57534E">📊 Portfolio Value</text>
+  <text x="1316" y="217" text-anchor="middle" font-size="9" fill="#78716C">Total value over time</text>
+  <text x="1316" y="235" text-anchor="middle" font-size="9" fill="#57534E">📈 Moving Averages</text>
+  <text x="1316" y="250" text-anchor="middle" font-size="9" fill="#78716C">50-day &amp; 200-day lines</text>
+  <text x="1316" y="268" text-anchor="middle" font-size="9" fill="#57534E">💰 Daily P&amp;L</text>
+  <text x="1316" y="283" text-anchor="middle" font-size="9" fill="#78716C">Gain / Loss tracking</text>
+  <text x="1316" y="301" text-anchor="middle" font-size="9" fill="#57534E">🏷 Sector Allocation</text>
+  <text x="1316" y="316" text-anchor="middle" font-size="9" fill="#78716C">Portfolio breakdown</text>
+  <text x="1316" y="334" text-anchor="middle" font-size="9" fill="#57534E">📉 Stock Trends</text>
+  <text x="1316" y="349" text-anchor="middle" font-size="9" fill="#78716C">Individual performance</text>
+  <text x="1316" y="370" text-anchor="middle" font-size="8" fill="#78716C">Port: localhost:3000</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CSV SEED ARROW  (portfolio_holdings.csv → dbt staging)
+       Routes: right of CSV box → down below main content → right → up into dbt
+  ══════════════════════════════════════════════════════════════════════ -->
+  <path d="M 216 288 L 242 288 L 242 415 L 648 415 L 648 172 L 664 172"
+        stroke="#D97706" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrA)"/>
+  <text x="440" y="428" text-anchor="middle" font-size="9" fill="#D97706">dbt seed  →  stg_portfolio_holdings</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       AIRFLOW ORCHESTRATION BOX
+  ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="28" y="448" width="1352" height="116" rx="8" fill="#FFF7ED" stroke="#FB923C" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="28" y="441" width="226" height="18" fill="#F8FAFC"/>
+  <text x="32" y="453" font-size="10" font-weight="700" fill="#C2410C" letter-spacing="0.3">⚙  Apache Airflow — Orchestration Layer</text>
+
+  <!-- Task 1 -->
+  <rect x="44"  y="462" width="268" height="90" rx="6" fill="white" stroke="#FDBA74" stroke-width="1"/>
+  <rect x="44"  y="462" width="268" height="28" rx="6" fill="#FFEDD5"/>
+  <rect x="44"  y="476" width="268" height="14" fill="#FFEDD5"/>
+  <text x="178" y="480" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">Task 1: ingest_stock_data</text>
+  <text x="178" y="505" text-anchor="middle" font-size="10" fill="#57534E">BashOperator: runs extract_data.py</text>
+  <text x="178" y="521" text-anchor="middle" font-size="9"  fill="#78716C">Yahoo Finance API  →  raw.stock_prices</text>
+  <text x="178" y="537" text-anchor="middle" font-size="9"  fill="#78716C">POSTGRES_HOST=postgres (Docker network)</text>
+
+  <path d="M 312 507 L 352 507" stroke="#F97316" stroke-width="1.5" fill="none" marker-end="url(#arrO)"/>
+  <text x="332" y="500" text-anchor="middle" font-size="9" fill="#F97316">success</text>
+
+  <!-- Task 2 -->
+  <rect x="356" y="462" width="268" height="90" rx="6" fill="white" stroke="#FDBA74" stroke-width="1"/>
+  <rect x="356" y="462" width="268" height="28" rx="6" fill="#FFEDD5"/>
+  <rect x="356" y="476" width="268" height="14" fill="#FFEDD5"/>
+  <text x="490" y="480" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">Task 2: dbt_run</text>
+  <text x="490" y="505" text-anchor="middle" font-size="10" fill="#57534E">BashOperator: runs  dbt run</text>
+  <text x="490" y="521" text-anchor="middle" font-size="9"  fill="#78716C">staging  →  intermediate  →  marts</text>
+  <text x="490" y="537" text-anchor="middle" font-size="9"  fill="#78716C">Populates analytics schema in Postgres</text>
+
+  <path d="M 624 507 L 664 507" stroke="#F97316" stroke-width="1.5" fill="none" marker-end="url(#arrO)"/>
+  <text x="644" y="500" text-anchor="middle" font-size="9" fill="#F97316">success</text>
+
+  <!-- Task 3 -->
+  <rect x="668" y="462" width="268" height="90" rx="6" fill="white" stroke="#FDBA74" stroke-width="1"/>
+  <rect x="668" y="462" width="268" height="28" rx="6" fill="#FFEDD5"/>
+  <rect x="668" y="476" width="268" height="14" fill="#FFEDD5"/>
+  <text x="802" y="480" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">Task 3: dbt_test</text>
+  <text x="802" y="505" text-anchor="middle" font-size="10" fill="#57534E">BashOperator: runs  dbt test</text>
+  <text x="802" y="521" text-anchor="middle" font-size="9"  fill="#78716C">unique · not_null · relationships</text>
+  <text x="802" y="537" text-anchor="middle" font-size="9"  fill="#78716C">Pipeline fails fast on data quality issues</text>
+
+  <!-- Schedule box -->
+  <rect x="968" y="462" width="392" height="90" rx="6" fill="white" stroke="#FDBA74" stroke-width="1"/>
+  <rect x="968" y="462" width="392" height="28" rx="6" fill="#FFEDD5"/>
+  <rect x="968" y="476" width="392" height="14" fill="#FFEDD5"/>
+  <text x="1164" y="480" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">Schedule &amp; Config</text>
+  <text x="1164" y="505" text-anchor="middle" font-size="10" fill="#57534E">⏰  Cron:  0 18 * * 1-5  (Daily 6:00 PM EST, Mon–Fri)</text>
+  <text x="1164" y="521" text-anchor="middle" font-size="9"  fill="#78716C">After US market close  ·  catchup=False  ·  retries=1</text>
+  <text x="1164" y="537" text-anchor="middle" font-size="9"  fill="#78716C">UI: localhost:8080  ·  pgAdmin: localhost:8082</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       FOOTER  —  Architecture summary + color legend
+  ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="16" y="576" width="1368" height="64" fill="white" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+
+  <text x="30" y="594" font-size="9" font-weight="700" fill="#374151">Architecture:</text>
+  <text x="100" y="594" font-size="9" fill="#6B7280">ELT pattern  |  Medallion (Bronze → Silver → Gold)  |  Star Schema (Dimension + Fact tables)  |  Idempotent daily loads</text>
+
+  <text x="30" y="612" font-size="9" font-weight="700" fill="#374151">Data Flow:</text>
+  <text x="82" y="612" font-size="9" fill="#6B7280">Yahoo Finance API  →  Python extract_data.py  →  PostgreSQL raw.stock_prices  →  dbt transform  →  PostgreSQL analytics schema  →  Metabase</text>
+
+  <!-- Legend dots -->
+  <circle cx="30"  cy="630" r="5" fill="#FEF9C3" stroke="#FCD34D" stroke-width="1"/>
+  <text x="40"  y="634" font-size="9" fill="#57534E">Data Sources</text>
+
+  <circle cx="120" cy="630" r="5" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+  <text x="130" y="634" font-size="9" fill="#57534E">Python Ingestion</text>
+
+  <circle cx="225" cy="630" r="5" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1"/>
+  <text x="235" y="634" font-size="9" fill="#57534E">PostgreSQL</text>
+
+  <circle cx="305" cy="630" r="5" fill="#EDE9FE" stroke="#8B5CF6" stroke-width="1"/>
+  <text x="315" y="634" font-size="9" fill="#57534E">dbt Core</text>
+
+  <circle cx="370" cy="630" r="5" fill="#FFF7ED" stroke="#FB923C" stroke-width="1"/>
+  <text x="380" y="634" font-size="9" fill="#57534E">Apache Airflow</text>
+
+  <circle cx="460" cy="630" r="5" fill="#FDF2F8" stroke="#F9A8D4" stroke-width="1"/>
+  <text x="470" y="634" font-size="9" fill="#57534E">Metabase</text>
+
+  <text x="700" y="634" font-size="9" fill="#94A3B8">github.com/thaisangcr7/Automated-Portfolio-Analytics-Pipeline</text>
+</svg>
