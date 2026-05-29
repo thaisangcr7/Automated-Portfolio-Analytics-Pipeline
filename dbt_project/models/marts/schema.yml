@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: dim_companies
+    description: >
+      Dimension table — one row per company in the portfolio.
+      Contains static descriptive information: name, sector, exchange.
+      This is the "who" table in the star schema.
+    columns:
+      - name: ticker
+        description: Stock ticker symbol — primary key
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: Full legal company name
+        tests:
+          - not_null
+      - name: sector
+        description: Industry sector (Technology, Financials)
+        tests:
+          - not_null
+      - name: exchange
+        description: Stock exchange (NASDAQ or NYSE)
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['NASDAQ', 'NYSE']
+
+  - name: fct_portfolio_valuation
+    description: >
+      Fact table — one row per trading day per ticker.
+      The central analytical table combining prices, moving averages,
+      holdings, and portfolio calculations. Metabase reads from this.
+    columns:
+      - name: price_date
+        description: Trading date
+        tests:
+          - not_null
+      - name: ticker
+        description: Stock ticker symbol — foreign key to dim_companies
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_companies')
+              field: ticker
+      - name: market_value
+        description: Current value of holding (shares × close_price)
+        tests:
+          - not_null
+      - name: unrealized_pnl
+        description: Profit or loss if sold today (market_value - total_cost)
+        tests:
+          - not_null
+      - name: close_price
+        tests:
+          - not_null

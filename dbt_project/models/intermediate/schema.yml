@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: int_stock_prices_enriched
+    description: >
+      Stock prices enriched with 50-day moving average, 200-day moving average,
+      and daily return percentage. Uses SQL WINDOW functions to look back across
+      previous rows without collapsing them (unlike GROUP BY).
+    columns:
+      - name: price_date
+        description: Trading date
+        tests:
+          - not_null
+      - name: ticker
+        description: Stock ticker symbol
+        tests:
+          - not_null
+      - name: close_price
+        description: Closing price for the day
+        tests:
+          - not_null
+      - name: ma_50d
+        description: >
+          50-day simple moving average of close_price.
+          Requires at least 50 rows of history per ticker to be meaningful.
+      - name: ma_200d
+        description: >
+          200-day simple moving average of close_price.
+          Requires at least 200 rows of history per ticker to be meaningful.
+      - name: daily_return_pct
+        description: >
+          Percentage change in close price vs the previous trading day.
+          Null for the first row of each ticker (no previous day to compare).

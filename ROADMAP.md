@@ -35,14 +35,17 @@ Apache Airflow schedules and monitors the pipeline daily at 6 PM EST.
 
 ---
 
-## Phase 4 — Transformation ⬜ Not Started
+## Phase 4 — Transformation ✅
 dbt models transform raw data into analytics-ready tables (medallion architecture).
 
-- [ ] `models/staging/` — deduplicate, rename columns, cast types (Bronze)
-- [ ] `models/intermediate/` — 50-day & 200-day moving averages via SQL WINDOW (Silver)
-- [ ] `models/marts/` — `dim_companies` + `fct_portfolio_valuation` star schema (Gold)
-- [ ] dbt tests — unique, not_null, referential integrity
-- [ ] Add `dbt run` and `dbt test` as Airflow tasks
+- [x] `models/staging/stg_stock_prices.sql` — deduplicate, rename columns, cast types (Bronze)
+- [x] `models/staging/stg_portfolio_holdings.sql` — load seed data into staging layer
+- [x] `models/intermediate/int_stock_prices_enriched.sql` — 50d & 200d MA via SQL WINDOW (Silver)
+- [x] `models/marts/dim_companies.sql` — dimension table, 5 rows (Gold)
+- [x] `models/marts/fct_portfolio_valuation.sql` — fact table, 1,260 rows (Gold)
+- [x] dbt tests — 26 tests passing: unique, not_null, accepted_values, relationships
+- [x] `dbt seed` → 5 rows, `dbt run` → 5 models, `dbt test` → 26/26 PASS ✅
+- [ ] Add `dbt run` and `dbt test` as Airflow tasks (Phase 5 pre-req)
 
 ---
 

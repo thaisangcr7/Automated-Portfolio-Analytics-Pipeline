@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data loaded by extract_data.py — never modified by dbt
+    schema: raw
+    tables:
+      - name: stock_prices
+        description: >
+          Append-only OHLCV stock prices from Yahoo Finance.
+          May contain duplicates if the ingestion script ran more than once
+          on the same day — deduplication happens in stg_stock_prices.
+        columns:
+          - name: date
+            description: Trading date (returned as timestamp by yfinance)
+          - name: ticker
+            description: Stock ticker symbol (AAPL, MSFT, GOOG, JPM, C)
+          - name: open
+            description: Opening price
+          - name: high
+            description: Intraday high price
+          - name: low
+            description: Intraday low price
+          - name: close
+            description: Closing price
+          - name: volume
+            description: Number of shares traded
+          - name: extracted_at
+            description: Timestamp when this row was loaded — used for deduplication
