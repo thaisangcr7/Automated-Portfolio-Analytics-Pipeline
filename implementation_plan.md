@@ -42,28 +42,28 @@ We will organize the project under `/Users/sangth/Projects/Data_Engineer/` using
 
 ```
 /Users/sangth/Projects/Data_Engineer/
-├── docker-compose.yml          # Container configuration for Postgres, Airflow, pgAdmin, and Metabase
-├── README.md                   # Project overview, architecture, and setup instructions
-├── requirements.txt            # Python dependencies for the ingestion scripts
+├── CLAUDE.md                   # Always-on AI context file (loaded every session)
+├── docker-compose.yml          # All services: Postgres, Airflow, pgAdmin, Metabase
+├── .env                        # Secrets — never committed (in .gitignore)
+├── .env.example                # Template for .env — safe to commit
+├── requirements.txt            # Python dependencies for ingestion scripts
+├── implementation_plan.md      # Full phased roadmap (this file)
+├── task.md                     # Current task checklist (tracks progress)
+├── docs/
+│   └── architecture.svg        # Pipeline diagram (embedded in README)
 ├── dags/                       # Apache Airflow DAGs
 │   └── portfolio_orchestrator.py
 ├── scripts/                    # Core Python modules for ingestion
 │   └── extract_data.py
-├── dbt_project/                # dbt project root
-│   ├── dbt_project.yml         # dbt project configurations
-│   ├── profiles.yml            # Database connection configuration (Postgres)
-│   ├── seeds/                  # Static portfolio holdings and targets csv files
-│   │   └── portfolio_holdings.csv
-│   └── models/
-│       ├── staging/            # Raw views and basic type casting
-│       │   ├── stg_stock_prices.sql
-│       │   └── stg_portfolio_holdings.sql
-│       ├── intermediate/       # Aggregations, calculated columns (moving averages)
-│       │   └── int_stock_prices_enriched.sql
-│       └── marts/              # Fact & Dimension tables (Star Schema)
-│           ├── dim_companies.sql
-│           └── fct_portfolio_valuation.sql
-└── config/                     # Any additional config files
+└── dbt_project/                # dbt project root
+    ├── dbt_project.yml         # dbt project config + materialization strategy
+    ├── profiles.yml            # Database connection (dev=localhost, docker=container)
+    ├── seeds/
+    │   └── portfolio_holdings.csv
+    └── models/
+        ├── staging/            # Bronze: stg_stock_prices, stg_portfolio_holdings
+        ├── intermediate/       # Silver: int_stock_prices_enriched
+        └── marts/              # Gold: dim_companies, fct_portfolio_valuation
 ```
 
 ---
@@ -81,7 +81,7 @@ Set up the core local infrastructure.
 
 ### Phase 2: Ingestion & Extraction (Python & Yahoo Finance API)
 Write the script that pulls raw financial data.
-*   **Create** `scripts/extract_data.py` using `yfinance` to fetch stock prices for a specific portfolio (e.g., AAPL, MSFT, GOOG, AMZN).
+*   **Create** `scripts/extract_data.py` using `yfinance` to fetch stock prices for a specific portfolio (AAPL, MSFT, GOOG, JPM, C).
 *   **Load:** Load this data into a `raw` schema inside our Postgres container.
 *   **Verify:** Check database tables in pgAdmin to verify the data was successfully loaded with appropriate types.
 

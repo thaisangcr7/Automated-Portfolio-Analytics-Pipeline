@@ -64,7 +64,7 @@ Everything runs inside Docker — fully reproducible local environment.
 ├── .env.example                     ← template for .env (safe to commit)
 ├── requirements.txt                 ← Python dependencies
 ├── implementation_plan.md           ← full phased roadmap (read this for context)
-├── task.md                          ← current task checklist (tracks progress)
+├── ROADMAP.md                       ← current phase status and task checklist
 │
 ├── docs/
 │   └── architecture.svg             ← pipeline diagram (embedded in README)
@@ -98,7 +98,7 @@ Everything runs inside Docker — fully reproducible local environment.
 | 4 — dbt transformation | ⬜ Not started | models/ folder doesn't exist yet |
 | 5 — Metabase dashboard | ⬜ Not started | Service not yet in docker-compose |
 
-**Before writing any new code, check `task.md` for the current state.**
+**Before writing any new code, check `ROADMAP.md` for the current state.**
 
 ---
 
