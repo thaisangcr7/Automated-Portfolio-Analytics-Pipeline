@@ -45,7 +45,8 @@ dbt models transform raw data into analytics-ready tables (medallion architectur
 - [x] `models/marts/fct_portfolio_valuation.sql` — fact table, 1,260 rows (Gold)
 - [x] dbt tests — 26 tests passing: unique, not_null, accepted_values, relationships
 - [x] `dbt seed` → 5 rows, `dbt run` → 5 models, `dbt test` → 26/26 PASS ✅
-- [ ] Add `dbt run` and `dbt test` as Airflow tasks (Phase 5 pre-req)
+- [x] Added dbt_seed + dbt_run + dbt_test tasks to Airflow DAG
+- [x] Full 4-task pipeline verified end-to-end via Airflow: ingest → seed → run → test ✅
 
 ---
 
