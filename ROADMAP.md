@@ -24,12 +24,14 @@ Python script pulls daily stock prices from Yahoo Finance into the raw schema.
 
 ---
 
-## Phase 3 — Orchestration 🔧 In Progress
+## Phase 3 — Orchestration ✅
 Apache Airflow schedules and monitors the pipeline daily at 6 PM EST.
 
 - [x] Extended `docker-compose.yml` with Airflow services (webserver, scheduler, init)
 - [x] `dags/portfolio_orchestrator.py` — DAG with daily cron schedule
-- [ ] **Next:** Verify end-to-end pipeline run via Airflow UI at localhost:8080
+- [x] Fixed `multitasking==0.0.10` pin — Python 3.8 compatibility in Airflow container
+- [x] Fixed `AIRFLOW__WEBSERVER__SECRET_KEY` — webserver and scheduler now share same key
+- [x] Verified end-to-end: DAG triggered → 15 rows loaded into `raw.stock_prices` ✅
 
 ---
 
