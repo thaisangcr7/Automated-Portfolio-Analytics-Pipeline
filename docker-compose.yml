@@ -45,10 +45,11 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
       AIRFLOW__WEBSERVER__SECRET_KEY: "de_portfolio_secret_key_2026"
-      _PIP_ADDITIONAL_REQUIREMENTS: "yfinance pandas sqlalchemy psycopg2-binary multitasking==0.0.10"
+      _PIP_ADDITIONAL_REQUIREMENTS: "yfinance pandas sqlalchemy psycopg2-binary multitasking==0.0.10 dbt-core dbt-postgres"
     volumes:
       - ./dags:/opt/airflow/dags
       - ./scripts:/opt/airflow/scripts
+      - ./dbt_project:/opt/airflow/dbt_project
     command: >
       bash -c "airflow db migrate &&
       airflow users create
@@ -71,7 +72,7 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
       AIRFLOW__WEBSERVER__SECRET_KEY: "de_portfolio_secret_key_2026"
-      _PIP_ADDITIONAL_REQUIREMENTS: "yfinance pandas sqlalchemy psycopg2-binary multitasking==0.0.10"
+      _PIP_ADDITIONAL_REQUIREMENTS: "yfinance pandas sqlalchemy psycopg2-binary multitasking==0.0.10 dbt-core dbt-postgres"
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
@@ -80,6 +81,7 @@ services:
     volumes:
       - ./dags:/opt/airflow/dags
       - ./scripts:/opt/airflow/scripts
+      - ./dbt_project:/opt/airflow/dbt_project
     command: webserver
     depends_on:
       postgres:
@@ -101,13 +103,14 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
       AIRFLOW__WEBSERVER__SECRET_KEY: "de_portfolio_secret_key_2026"
-      _PIP_ADDITIONAL_REQUIREMENTS: "yfinance pandas sqlalchemy psycopg2-binary multitasking==0.0.10"
+      _PIP_ADDITIONAL_REQUIREMENTS: "yfinance pandas sqlalchemy psycopg2-binary multitasking==0.0.10 dbt-core dbt-postgres"
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - ./dags:/opt/airflow/dags
       - ./scripts:/opt/airflow/scripts
+      - ./dbt_project:/opt/airflow/dbt_project
     command: scheduler
     depends_on:
       postgres:
