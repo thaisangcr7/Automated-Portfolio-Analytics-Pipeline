@@ -1,0 +1,30 @@
+name: 'portfolio_analytics'
+version: '1.0.0'
+config-version: 2
+
+# Connection profile to match profiles.yml
+profile: 'portfolio_profile'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configure materialization strategies for our medallion architecture
+models:
+  portfolio_analytics:
+    # Staging models (Bronze) - views for lightweight query passing
+    staging:
+      +materialized: view
+    # Intermediate models (Silver) - views containing rolling window calculations
+    intermediate:
+      +materialized: view
+    # Marts models (Gold) - tables for optimized dashboard querying
+    marts:
+      +materialized: table

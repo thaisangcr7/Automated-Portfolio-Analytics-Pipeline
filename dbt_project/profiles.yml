@@ -1,0 +1,21 @@
+portfolio_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      port: 5432
+      user: postgres
+      password: postgres
+      dbname: portfolio_db
+      schema: analytics
+      threads: 4
+    docker:
+      type: postgres
+      host: postgres
+      port: 5432
+      user: postgres
+      password: postgres
+      dbname: portfolio_db
+      schema: analytics
+      threads: 4
