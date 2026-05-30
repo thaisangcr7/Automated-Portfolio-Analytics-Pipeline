@@ -37,7 +37,7 @@ flowchart TD
     end
 
     subgraph Orchestration["Orchestration · Apache Airflow"]
-        H["portfolio_analytics_pipeline DAG\n⏰ Daily at 6 PM EST  Mon–Fri"]
+        H["portfolio_analytics_pipeline DAG\n⏰ Daily at 6 PM EST Mon–Fri\ningest → seed → run → test"]
     end
 
     A1 -->|"HTTP pull"| B
@@ -126,14 +126,16 @@ erDiagram
 ```mermaid
 flowchart LR
     T1["ingest_stock_data\nPython script pulls\nYahoo Finance → Postgres"]
-    T2["dbt_run\ndbt run transforms\nraw → analytics schema"]
-    T3["dbt_test\ndbt test validates\nnulls · uniqueness · refs"]
+    T2["dbt_seed\nLoads portfolio_holdings.csv\ninto analytics schema"]
+    T3["dbt_run\ndbt run transforms\nraw → analytics schema"]
+    T4["dbt_test\ndbt test validates\nnulls · uniqueness · refs"]
 
-    T1 --> T2 --> T3
+    T1 --> T2 --> T3 --> T4
 
     style T1 fill:#dbeafe,stroke:#2563eb
-    style T2 fill:#ede9fe,stroke:#7c3aed
-    style T3 fill:#d1fae5,stroke:#059669
+    style T2 fill:#fef3c7,stroke:#d97706
+    style T3 fill:#ede9fe,stroke:#7c3aed
+    style T4 fill:#d1fae5,stroke:#059669
 ```
 
 ---
@@ -196,8 +198,8 @@ cp .env.example .env        # Edit .env with your passwords
 ### 2. Start all services
 
 ```bash
-docker-compose up airflow-init   # One-time database setup
-docker-compose up -d             # Start everything in background
+docker compose up airflow-init   # One-time database setup
+docker compose up -d             # Start everything in background
 ```
 
 ### 3. Access the tools
@@ -210,7 +212,23 @@ docker-compose up -d             # Start everything in background
 
 ### 4. Run the pipeline
 
-In Airflow UI → enable `portfolio_analytics_pipeline` DAG → trigger manually.
+**Option A — Automatic:** The DAG runs every weekday at 6 PM EST automatically.
+
+**Option B — Manual:** In Airflow UI → enable `portfolio_analytics_pipeline` DAG → click the ▶ play button to trigger immediately.
+
+The 4 tasks will run in sequence: `ingest_stock_data → dbt_seed → dbt_run → dbt_test`
+
+---
+
+## Dashboard
+
+Open Metabase at **http://localhost:3000** to see the live `Portfolio Analytics` dashboard:
+
+- **Total Portfolio Value** — current market value of all holdings
+- **Portfolio Value Over Time** — line chart, all 5 tickers
+- **Unrealized P&L by Stock** — bar chart, profit/loss per position  
+- **AAPL Moving Averages** — close price vs 50-day vs 200-day MA
+- **Sector Allocation** — pie chart, Technology vs Financials
 
 ---
 
@@ -232,6 +250,6 @@ In Airflow UI → enable `portfolio_analytics_pipeline` DAG → trigger manually
 |-------|--------|-------------|
 | 1 — Infrastructure | ✅ Done | Docker, Postgres, pgAdmin |
 | 2 — Ingestion | ✅ Done | Python extracts Yahoo Finance → raw schema |
-| 3 — Orchestration | 🔧 In Progress | Airflow DAG defined, pending verification |
-| 4 — Transformation | ⬜ Planned | dbt staging → intermediate → marts |
-| 5 — Visualization | ⬜ Planned | Metabase dashboard |
+| 3 — Orchestration | ✅ Done | Airflow DAG, 4 tasks, daily schedule verified |
+| 4 — Transformation | ✅ Done | dbt staging → intermediate → marts, 26 tests passing |
+| 5 — Visualization | ✅ Done | Metabase dashboard, 5 charts live |
