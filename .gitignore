@@ -26,3 +26,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Personal study notes — not for public viewing
+STUDY_NOTES.md
