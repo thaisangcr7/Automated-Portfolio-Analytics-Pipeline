@@ -50,9 +50,15 @@ dbt models transform raw data into analytics-ready tables (medallion architectur
 
 ---
 
-## Phase 5 — Visualization ⬜ Not Started
+## Phase 5 — Visualization ✅
 Metabase dashboard reads from the Gold layer and displays portfolio analytics.
 
-- [ ] Add Metabase service to `docker-compose.yml`
-- [ ] Connect Metabase to `analytics` schema in PostgreSQL
-- [ ] Build dashboards: portfolio value, P&L, moving averages, sector allocation
+- [x] Added Metabase service to `docker-compose.yml` (port 3000, backed by Postgres)
+- [x] Connected Metabase to `analytics` schema in PostgreSQL
+- [x] Built 5 dashboard charts:
+  - Total Portfolio Value (number card — latest day)
+  - Portfolio Value Over Time (line chart — all 5 tickers)
+  - Unrealized P&L by Stock (bar chart)
+  - AAPL Moving Averages (line chart — close_price, ma_50d, ma_200d)
+  - Sector Allocation (pie chart — Technology vs Financials)
+- [x] Dashboard saved as `Portfolio Analytics` in Metabase ✅
