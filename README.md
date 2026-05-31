@@ -190,9 +190,9 @@ flowchart LR
 ### 1. Clone & configure
 
 ```bash
-git clone <your-repo-url>
-cd Data_Engineer
-cp .env.example .env        # Edit .env with your passwords
+git clone https://github.com/thaisangcr7/Automated-Portfolio-Analytics-Pipeline.git
+cd Automated-Portfolio-Analytics-Pipeline
+cp .env.example .env        # credentials are pre-filled with safe local defaults
 ```
 
 ### 2. Start all services
