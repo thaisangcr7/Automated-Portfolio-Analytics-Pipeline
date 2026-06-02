@@ -63,7 +63,7 @@ Everything runs inside Docker — fully reproducible local environment.
 ├── .env                             ← secrets (never commit — in .gitignore)
 ├── .env.example                     ← template for .env (safe to commit)
 ├── requirements.txt                 ← Python dependencies
-├── implementation_plan.md           ← full phased roadmap (read this for context)
+├── implementation_plan.md           ← original phased roadmap (reference only)
 ├── ROADMAP.md                       ← current phase status and task checklist
 │
 ├── docs/
@@ -80,10 +80,10 @@ Everything runs inside Docker — fully reproducible local environment.
     ├── profiles.yml                 ← DB connection (dev=localhost, docker=container)
     ├── seeds/
     │   └── portfolio_holdings.csv   ← static: shares, cost basis, sector per ticker
-    └── models/                      ← NOT YET CREATED — Phase 4 work
-        ├── staging/
-        ├── intermediate/
-        └── marts/
+    └── models/
+        ├── staging/                 ← stg_stock_prices, stg_portfolio_holdings
+        ├── intermediate/            ← int_stock_prices_enriched (moving averages)
+        └── marts/                   ← dim_companies, fct_portfolio_valuation
 ```
 
 ---
@@ -94,9 +94,9 @@ Everything runs inside Docker — fully reproducible local environment.
 |-------|--------|-------|
 | 1 — Docker + Postgres + pgAdmin | ✅ Done | Health checks added to docker-compose |
 | 2 — Python ingestion | ✅ Done | extract_data.py, append pattern, env vars |
-| 3 — Airflow orchestration | 🔧 In Progress | DAG file exists, needs end-to-end verification |
-| 4 — dbt transformation | ⬜ Not started | models/ folder doesn't exist yet |
-| 5 — Metabase dashboard | ⬜ Not started | Service not yet in docker-compose |
+| 3 — Airflow orchestration | ✅ Done | 4-task DAG verified end-to-end |
+| 4 — dbt transformation | ✅ Done | 5 models, 26 tests passing, star schema built |
+| 5 — Metabase dashboard | ✅ Done | 5 charts live, Portfolio Analytics dashboard |
 
 **Before writing any new code, check `ROADMAP.md` for the current state.**
 
@@ -144,8 +144,8 @@ marts/        → materialized: table  (optimized for dashboard queries)
 
 ```bash
 # Start all services
-docker-compose up airflow-init        # run once to initialize Airflow DB
-docker-compose up -d                  # start everything in background
+docker compose up airflow-init        # run once to initialize Airflow DB
+docker compose up -d                  # start everything in background
 
 # Check running containers
 docker ps
